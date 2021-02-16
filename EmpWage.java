@@ -1,3 +1,9 @@
+public interface IEmployeeWageComputation
+{
+    public void addCompany(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs);
+
+    public void calculateTotalWage();
+}
 public class CompanyEmpWage
 {
     final String COMPANY_NAME;
@@ -27,7 +33,7 @@ public class CompanyEmpWage
         return "Total wage for a month of " + COMPANY_NAME + " employee is " + totalEmpWage + "\n";
     }
 }
-public class EmployeeWageComputation
+class EmployeeWageComputation implements IEmployeeWageComputation
 {
     public static final int PART_TIME = 1;
     public static final int FULL_TIME = 2;
@@ -51,12 +57,12 @@ public class EmployeeWageComputation
     {
         switch (empType)
         {
-        case FULL_TIME:
-            return 8;
-        case PART_TIME:
-            return 4;
-        default:
-            return 0;
+            case FULL_TIME:
+                return 8;
+            case PART_TIME:
+                return 4;
+            default:
+                return 0;
         }
     }
     public void calculateTotalWage()
